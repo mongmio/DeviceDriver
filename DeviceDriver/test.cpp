@@ -23,6 +23,15 @@ TEST_F(DeviceDriverTest, Read5TimesAndVerifyData) {
 	driver.read(TEST_ADDRESS);
 }
 
+TEST_F(DeviceDriverTest, VerifyReadFailException) {
+	EXPECT_CALL(deviceMock, read(testing::_))
+		.WillOnce(testing::Return(0x1234))
+		.WillOnce(testing::Return(0x4567));
+
+	constexpr long TEST_ADDRESS = 0x1234;
+	EXPECT_THROW(driver.read(TEST_ADDRESS), ReadFailException);
+}
+
 TEST_F(DeviceDriverTest, VerifyExceptionBeforeWirte) {
 	EXPECT_CALL(deviceMock, read(testing::_))
 		.WillRepeatedly(testing::Return(0x1234));
