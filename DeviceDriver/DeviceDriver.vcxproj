@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeviceDriver.h" />
+    <ClInclude Include="Exceptions.h" />
     <ClInclude Include="FlashMemoryDevice.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
